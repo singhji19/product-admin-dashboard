@@ -11,10 +11,10 @@ at https://dummyjson.com, and every request made to this API goes through Axios 
 
 ## Setup Instructions
 
-To run this project on your own computer, first make sure Node.js is installed. Then clone this repository, open a terminal inside the project folder, and run 
-`npm install` to install all the required dependencies. Once the installation is complete, run `npm run dev` to start the development server, and open 
-`http://localhost:3000` in your browser to view the application. To log in, use the username `emilys` and the password `emilyspass`, since these are the 
-demo credentials provided by the DummyJSON API for authentication.
+1. npx create-next-app@latest admin --js --tailwind --app --no-src-dir --import-alias "@/*"
+2. cd admin && npm i axios
+3. Copy these folders over the generated ones: `app/ components/ hooks/ lib/ services/
+4. npm run dev` -> login -> username  - emilys and  password - emilyspass
 
 ## Features Completed
 
