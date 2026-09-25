@@ -1,0 +1,50 @@
+# Product Admin Dashboard
+
+This project is a small admin dashboard built as part of a frontend assignment,where a logged-in user can view, search, filter, sort and manage a list of 
+products using the free DummyJSON API. It has been developed using Next.js for the framework and routing, React for building the user interface, Tailwind CSS
+for styling, and Axios for handling all communication with the API.
+
+## Technologies Used
+
+This project makes use of Next.js (App Router), React, Tailwind CSS and Axios. All data used in the application comes from the public DummyJSON API available 
+at https://dummyjson.com, and every request made to this API goes through Axios rather than any other method.
+
+## Setup Instructions
+
+To run this project on your own computer, first make sure Node.js is installed. Then clone this repository, open a terminal inside the project folder, and run 
+`npm install` to install all the required dependencies. Once the installation is complete, run `npm run dev` to start the development server, and open 
+`http://localhost:3000` in your browser to view the application. To log in, use the username `emilys` and the password `emilyspass`, since these are the 
+demo credentials provided by the DummyJSON API for authentication.
+
+## Features Completed
+
+In this project, I have implemented a complete login and logout flow where only authenticated users are able to access the product pages, and any user who is 
+not logged in is automatically redirected to the login page. I have built a product listing page that displays each product's image, title, category, price, 
+rating and stock, and this list is shown as a table on larger screens and as cards on smaller mobile screens. Pagination has been implemented so that products 
+load page by page from the API, along with page number buttons, Previous and Next controls, a page size selector, and a text summary showing which products are 
+currently being displayed out of the total. A debounced search feature has been added so that the application waits until the user stops typing before sending a 
+request to the API, which also resets the results back to the first page. Category filtering and sorting by price, rating or title have also been included, along
+with a detailed product page that shows images, a description and customer reviews, and displays a proper "not found" message if an invalid product id is entered. 
+I have also implemented the ability to add, edit and delete products through a validated form and a confirmation popup before deletion, and I have added loading 
+indicators, empty state messages and error messages with a retry option wherever data is being fetched from the API.
+
+## Important Decisions and Approach
+
+Since the DummyJSON API does not allow searching and filtering by category to be applied at the same time, I decided that whenever the user types something into 
+the search box, the category filter will be temporarily disabled, and searching will take priority over filtering. I made this decision because it keeps the
+behaviour of the application simple, predictable and easy for the user to understand. In addition, since the DummyJSON API does not actually persist any changes
+made through add, edit or delete requests, I have stored these changes in the browser's local storage and merged them with the data received from the API, so that
+the application still behaves as expected from the user's point of view even though the underlying API does not save the data permanently.
+
+## A Problem I Faced and How I Solved It
+
+One of the challenges I faced while building this project was that when a user typed quickly into the search box, older and slower API responses would 
+sometimes arrive after newer ones and incorrectly overwrite the most recent results on the screen. I solved this problem by using the AbortController 
+feature available in JavaScript, which allows a previous, still-pending request to be cancelled as soon as a new request is triggered, ensuring that only 
+the response from the latest request is ever used to update the product list.
+
+## Where AI Tools Were Used
+
+I used AI tools during the development of this project to help me understand certain concepts more clearly, to review and refine the structure of my code, 
+and to make sure I was following good practices throughout. However, I made sure to personally read through, understand and test every part of the code before 
+including it in this project, and I am able to explain and modify any part of it if required.
